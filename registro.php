@@ -2,24 +2,6 @@
 	error_reporting(0);
 	$conexion = mysqli_connect("localhost", "root", "", "revista");
 
-	//funcion que genera los paises y las provincias select
-
-
-	function generaPaises()
-		{
-			$consulta=mysqli_query("SELECT codPais, descPais FROM pais");
-
-			// Voy imprimiendo el primer select compuesto por los paises
-			echo "<select name='paises' id='paises' onChange='cargaContenido(this.id)'>";
-			echo "<option value='0'>Elige</option>";
-			while($registro=mysqli_fetch_row($consulta))
-			{
-				echo "<option value='".$registro[0]."'>".$registro[1]."</option>";
-			}
-			echo "</select>";
-		}
-
-
 	if($conexion){
 		$nombre = $_POST['nombre'];
 		$apellido = $_POST['apellido'];
@@ -74,7 +56,8 @@
 		<title>ABCD revistas</title>
 		<link href="css/custom.min.css" rel="stylesheet" media="screen">
 		<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-		<script src="jquery/select_dependientes.js"></script>
+		
+		<script type="text/javascript" src="js/select_dependientes.js"></script>
 
 		<script src="jquery/jquery.js"></script>
 	</head>
@@ -134,39 +117,21 @@
 						</div>
 						<div class="form-group">
 					      	<label for="select" class="col-lg-2 control-label">Pais</label>
-					      	<div class="col-lg-10">
-					        	<select class="form-control" id="selectPais" value="<?php echo $pais ?>" >	
-					        	<!-- id="selectPais" name="pais" adentro del select-->
+					      	<div class="col-lg-10">     		
 					        		
-					        		<?php
-										include 'includes/select_dependientes_proceso.php';
-									?>
-									
-					        		<div id="demo" style="width:600px;">
-										<div id="demoDer">
-											<select disabled="disabled" name="opcion" id="estados">
-												<option value="0">Selecciona opci&oacute;n...</option>
+										<div id="demoIzq">
+											<select class="form-control" name='paises' id='paises' onChange='cargaContenido(this.id)'><option value='0'>Elige</option><option value='1'>Argentina</option><option value='2'>Bolivia</option><option value='3'>Brasil</option><option value='4'>Canada</option><option value='5'>Chile</option><option value='6'>Colombia</option><option value='7'>Costa Rica</option><option value='8'>Cuba</option><option value='9'>Ecuador</option><option value='10'>El Salvador</option><option value='11'>Espa</option><option value='12'>Estados Unidos</option><option value='13'>Guatemala</option><option value='14'>Honduras</option><option value='15'>Mexico</option><option value='16'>Nicaragua</option><option value='17'>Panama</option><option value='18'>Paraguay</option><option value='19'>Peru</option><option value='20'>Puerto Rico</option><option value='21'>Uruguay</option>
 											</select>
 										</div>
-										<div id="demoIzq"><?php generaPaises(); ?>
+										
+										<div id="demoDer" class="form-control">
+											<select disabled="disabled" name="estados" id="estados">
+												<option value="0">Provincia</option>
+											</select>
 										</div>
-									</div>
-
-
-
-					        	</select>
 					        	<br>
 					      	</div>
 					    </div>
-					    <!--<div class="form-group">
-					      	<label for="select" class="col-lg-2 control-label">Provincia</label>
-					      	<div class="col-lg-10">
-					        	<select class="form-control" id="selectProvincia" name="provincia" value="<?php echo $provincia ?>">
-									
-					        	</select>
-					        	<br>
-					      	</div>
-					    </div>-->
 			    		<div class="form-group">
 			      			<label for="inputEmail" class="col-lg-2 control-label">Email</label>
 			      			<div class="col-lg-10">
