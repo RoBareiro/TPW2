@@ -9,8 +9,8 @@
 		$nro = $_POST['nro'];
 		$cp = $_POST['cp'];
 		$localidad = $_POST['localidad'];
-		$pais=$_POST['pais'];
-		$provincia=$_POST['provincia'];
+		$pais=$_POST['paises'];
+		$provincia=$_POST['estados'];
 		$telefono = $_POST['telefono'];
 		$mail = $_POST['mail'];
 		$usuario = $_POST['user'];
